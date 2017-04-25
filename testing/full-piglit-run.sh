@@ -302,8 +302,8 @@ PIGLIT_REFERENCE="${FPR_PIGLIT_REPORTS_PATH}/reference/${FPR_PIGLIT_PREFIX}-${GL
 					&& "${FPR_PIGLIT_PATH}"/piglit summary html -o -e pass "${DEQP_GLES31_SUMMARY}" "${DEQP_GLES31_REFERENCE}" "${DEQP_GLES31_RESULTS}" > /dev/null 2>&1 ) ) ) ) ) \
   && ( ! ${FPR_RUN_PIGLIT} \
     || ( ( ! ${FPR_VERBOSE} \
-	    || echo "${FPR_PIGLIT_PATH}"/piglit run ${PIGLIT_RUN_QUIET} all -x texcombine -x texCombine -n "${PIGLIT_NAME}" "${PIGLIT_RESULTS}" ) \
-	       && "${FPR_PIGLIT_PATH}"/piglit run ${PIGLIT_RUN_QUIET} all -x texcombine -x texCombine -n "${PIGLIT_NAME}" "${PIGLIT_RESULTS}" \
+	    || echo "${FPR_PIGLIT_PATH}"/piglit run ${PIGLIT_RUN_QUIET} all -t really-big-triangle -x texcombine -x texCombine -n "${PIGLIT_NAME}" "${PIGLIT_RESULTS}" ) \
+	       && "${FPR_PIGLIT_PATH}"/piglit run ${PIGLIT_RUN_QUIET} all -t really-big-triangle -x texcombine -x texCombine -n "${PIGLIT_NAME}" "${PIGLIT_RESULTS}" \
 	       && ( ! ${FPR_CREATE_PIGLIT_REPORT} \
 			  || ( ( SUMMARY=$("${FPR_PIGLIT_PATH}"/piglit summary console -d "${PIGLIT_SUMMARY}" "${PIGLIT_REFERENCE}" "${PIGLIT_RESULTS}") \
 				       && read -ra RESULTS <<< $(echo "${SUMMARY}" | grep ^regressions) \
