@@ -19,3 +19,4 @@ optional-exclusion-i965-gl-cts: program_interface_query.*invalid-enum
 optional-exclusion-i965-gl-cts: shader_subroutine.*ssbo_atomic_image_load_store
 optional-exclusion-softpipe-piglit: triangle-rasterization
 optional-exclusion-llvmpipe-piglit: glx-multithread-shader-compile
+optional-exclusion-swr-piglit: ext_transform_feedback.*immediate-reuse-index-buffer stencil-twoside ext_texture_array.*maxlayers bound-resource-limits
