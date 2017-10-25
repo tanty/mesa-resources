@@ -83,6 +83,8 @@
       <dep package="presentproto"/>
       <dep package="libxcb"/>
       <dep package="libxshmfence"/>
+      <dep package="wayland"/>
+      <dep package="wayland-protocols"/>
     </dependencies>
   </autotools>
 
@@ -125,6 +127,13 @@
             hash="sha256:42c328440f60a5795835c5ec4bdfc1329e75bba16b6e22b3a87ed17e9679e8f6"
             size="267110"/>
     <dependencies>
+    </dependencies>
+  </autotools>
+
+  <autotools id="wayland-protocols">
+    <branch repo="wayland"/>
+    <dependencies>
+      <dep package="wayland"/>
     </dependencies>
   </autotools>
 
