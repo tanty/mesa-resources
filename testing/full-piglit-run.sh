@@ -354,21 +354,23 @@ function run_tests {
 	export -p MESA_GLSL_VERSION_OVERRIDE=460
 	cd "$FPR_RUN_GL_CTS_DIR"
 	./"$FPR_RUN_GL_CTS_BIN" --deqp-runmode=txt-caselist --deqp-case=KHR-GL30 | $FPR_GREP KHR-GL30 > /dev/null
-	if [ $? -eq 0 ] && [ -f "$FPR_PIGLIT_PATH/tests/khr_gl45.py" ]; then
-	    FPR_INNER_RUN_SET=khr_gl45
+	if [ $? -eq 0 ] && [ -f "$FPR_PIGLIT_PATH/tests/khr_gl.py" ]; then
+	    FPR_INNER_RUN_SET=khr_gl
 	    export -p PIGLIT_KHR_GL_BIN="$FPR_RUN_GL_CTS_DIR"/"$FPR_RUN_GL_CTS_BIN"
+	    export -p PIGLIT_KHR_GL_EXTRA_ARGS="--deqp-case=GL46*"
 	    FPR_INNER_RUN_MESSAGE=" \
 			      PIGLIT_KHR_GL_BIN=\"$PIGLIT_KHR_GL_BIN\" \
 			      PIGLIT_KHR_GL_EXTRA_ARGS=\"$PIGLIT_KHR_GL_EXTRA_ARGS\""
 	else
-	    FPR_INNER_RUN_SET=cts_gl45
+	    FPR_INNER_RUN_SET=cts_gl
 	    export -p PIGLIT_CTS_GL_BIN="$FPR_RUN_GL_CTS_DIR"/"$FPR_RUN_GL_CTS_BIN"
+	    export -p PIGLIT_CTS_GL_EXTRA_ARGS="--deqp-case=GL46*"
 	    FPR_INNER_RUN_MESSAGE=" \
 			      PIGLIT_CTS_GL_BIN=\"$PIGLIT_CTS_GL_BIN\" \
 			      PIGLIT_CTS_GL_EXTRA_ARGS=\"$PIGLIT_CTS_GL_EXTRA_ARGS\""
 	fi
 	cd -
-	FPR_INNER_RUN_PARAMETERS="$(generate_pattern gl-cts)"
+	FPR_INNER_RUN_PARAMETERS="-t GL46 $(generate_pattern gl-cts)"
 	if [ $? -ne 0 ]; then
 	    return $?
 	fi
@@ -389,6 +391,8 @@ function run_tests {
         unset FPR_RUN_GL_CTS_BIN
         unset PIGLIT_KHR_GL_BIN
         unset PIGLIT_CTS_GL_BIN
+        unset PIGLIT_KHR_GL_EXTRA_ARGS
+        unset PIGLIT_CTS_GL_EXTRA_ARGS
         unset MESA_GLES_VERSION_OVERRIDE
         unset MESA_GLSL_VERSION_OVERRIDE
         unset MESA_GLSL_VERSION_OVERRIDE
