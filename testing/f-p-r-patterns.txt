@@ -26,3 +26,4 @@ optional-exclusion-llvmpipe-piglit: glx-multithread-shader-compile
 optional-exclusion-swr-piglit: ext_transform_feedback.*immediate-reuse-index-buffer stencil-twoside ext_texture_array.*maxlayers bound-resource-limits
 optional-exclusion-i965-piglit: glx_arb_sync_control.*swapbuffersmsc-divisor-zero glx_arb_sync_control.*waitformsc
 optional-exclusion-swr-piglit: spec.*ext_transform_feedback.*immediate-reuse-uniform-buffer
+optional-exclusion-swr-piglit: glx-multi-context-single-window
